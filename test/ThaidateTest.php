@@ -39,15 +39,15 @@ Class ThaidateTest extends PHPUnit_Framework_TestCase
 	public function testGetMonth4()
 	{
 		$thaidate = new yapadubpadoo\Thaidate("2015-04-30 23:59:59");
-		$dayOfWeek = $thaidate->getMonth();
-		$this->assertEquals('เมษายน', $dayOfWeek);
+		$month = $thaidate->getMonth();
+		$this->assertEquals('เมษายน', $month);
 	}
 
 	public function testGetMonth12()
 	{
 		$thaidate = new yapadubpadoo\Thaidate("2015-12-31 23:59:59");
-		$dayOfWeek = $thaidate->getMonth();
-		$this->assertEquals('ธันวาคม', $dayOfWeek);
+		$month = $thaidate->getMonth();
+		$this->assertEquals('ธันวาคม', $month);
 	}
 
 	public function testGetYear2558()
@@ -94,8 +94,8 @@ Class ThaidateTest extends PHPUnit_Framework_TestCase
 
 	public function testFormatThaiYearWithPHPDateFormat()
 	{
-		$thaidate = new yapadubpadoo\Thaidate("1984-12-04 23:59:59");
-		$datetime = $thaidate->format('วัน ::ThDay:: ที่ d เดือน ::ThMonth:: พ.ศ. ::ThYear::');
-		$this->assertEquals('วัน อังคาร ที่ 04 เดือน ธันวาคม พ.ศ. 2527', $datetime);
+		$thaidate = new yapadubpadoo\Thaidate("1983-04-17 09:00:00");
+		$datetime = $thaidate->format('วัน ::ThDay:: ที่ d เดือน ::ThMonth:: พ.ศ. ::ThYear:: (d M, Y - H:i)');
+		$this->assertEquals('วัน อาทิตย์ ที่ 17 เดือน เมษายน พ.ศ. 2526 (17 Apr, 1983 - 09:00)', $datetime);
 	}
 }
