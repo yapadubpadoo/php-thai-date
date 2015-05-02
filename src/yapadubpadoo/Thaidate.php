@@ -4,7 +4,6 @@ namespace yapadubpadoo;
 
 Class Thaidate {
 	protected $date;
-	protected $serverTimezone;
 	protected $thaiTimezone = 'Asia/Bangkok';
 
 	public function __construct($date)
@@ -89,7 +88,9 @@ Class Thaidate {
 
 	public function format($format)
 	{
-		return $this->date->format($this->thaiFormatReplace($format));
+		return $this->date->format(
+			$this->thaiFormatReplace($format)
+			);
 	}
 
 
