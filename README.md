@@ -32,6 +32,7 @@ Result is "2527"
 | ::ThYear::| Year in Buddhist calendar | 2526 |
 
 ```php
+$thaidate = new yapadubpadoo\Thaidate("1983-04-17 09:00:00");
 $format = 'วัน ::ThDay:: ที่ d เดือน ::ThMonth:: พ.ศ. ::ThYear:: (d M, Y - H:i)';
 $datetime = $thaidate->format($format);
 ```
