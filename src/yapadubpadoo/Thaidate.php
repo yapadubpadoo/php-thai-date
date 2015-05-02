@@ -27,6 +27,25 @@ Class Thaidate {
 		return $ThDayOfWeek[$index];
 	}
 
+	private function getThaiMonth($index)
+	{
+		$ThMonth = array(
+			'มกราคม',
+			'กุมภาพันธ์',
+			'มีนาคม',
+			'เมษายน',
+			'พฤษภาคม',
+			'มิถุนายน',
+			'กรกฎาคม',
+			'สิงหาคม',
+			'กันยายน',
+			'ตุลาคม',
+			'พฤศจิกายน',
+			'ธันวาคม'
+			);
+		return $ThMonth[$index-1];
+	}
+
 	public function getPHPDateObject()
 	{
 		return $this->date;
@@ -40,5 +59,15 @@ Class Thaidate {
 	public function getDayOfWeek()
 	{
 		return $this->getThaiDay($this->date->format('w'));
+	}
+
+	public function getMonth()
+	{
+		return $this->getThaiMonth($this->date->format('n'));
+	}
+
+	public function getYear()
+	{
+		return intval($this->date->format('Y'))+543;
 	}
 }
