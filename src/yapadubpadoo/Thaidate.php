@@ -70,4 +70,27 @@ Class Thaidate {
 	{
 		return intval($this->date->format('Y'))+543;
 	}
+
+	private function thaiFormatReplace($format)
+	{
+		$pattern = array(
+			'/::ThDay::/',
+			'/::ThMonth::/',
+			'/::ThYear::/'
+			);
+		$replacement = array(
+			self::getDayOfWeek(),
+			self::getMonth(),
+			self::getYear()
+			);
+		$newformat = preg_replace($pattern, $replacement, $format);
+		return $newformat;
+	}
+
+	public function format($format)
+	{
+		return $this->date->format($this->thaiFormatReplace($format));
+	}
+
+
 }

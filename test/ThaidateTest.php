@@ -64,4 +64,38 @@ Class ThaidateTest extends PHPUnit_Framework_TestCase
 		$this->assertEquals('2527', $year);
 	}
 
+	public function testFormat()
+	{
+		$thaidate = new yapadubpadoo\Thaidate("1984-12-04 23:59:59");
+		$datetime = $thaidate->format('Y-m-d H:i:s');
+		$this->assertEquals('1984-12-04 23:59:59', $datetime);
+	}
+
+	public function testFormatThaiDay()
+	{
+		$thaidate = new yapadubpadoo\Thaidate("1984-12-04 23:59:59");
+		$datetime = $thaidate->format('วัน ::ThDay::');
+		$this->assertEquals('วัน อังคาร', $datetime);
+	}
+
+	public function testFormatThaiDayWithPHPDateFormat()
+	{
+		$thaidate = new yapadubpadoo\Thaidate("1984-12-04 23:59:59");
+		$datetime = $thaidate->format('วัน ::ThDay:: ที่ d');
+		$this->assertEquals('วัน อังคาร ที่ 04', $datetime);
+	}
+
+	public function testFormatThaiMonthWithPHPDateFormat()
+	{
+		$thaidate = new yapadubpadoo\Thaidate("1984-12-04 23:59:59");
+		$datetime = $thaidate->format('วัน ::ThDay:: ที่ d เดือน ::ThMonth::');
+		$this->assertEquals('วัน อังคาร ที่ 04 เดือน ธันวาคม', $datetime);
+	}
+
+	public function testFormatThaiYearWithPHPDateFormat()
+	{
+		$thaidate = new yapadubpadoo\Thaidate("1984-12-04 23:59:59");
+		$datetime = $thaidate->format('วัน ::ThDay:: ที่ d เดือน ::ThMonth:: พ.ศ. ::ThYear::');
+		$this->assertEquals('วัน อังคาร ที่ 04 เดือน ธันวาคม พ.ศ. 2527', $datetime);
+	}
 }
